@@ -1,0 +1,11 @@
+table{
+    border-collapse: collapse;
+}
+
+tr{
+    border: 1px #000000 solid;
+}
+
+div{
+    margin: 20px;
+}
