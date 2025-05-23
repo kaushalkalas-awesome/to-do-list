@@ -14,8 +14,13 @@ export class AppComponent {
   completeList:string[] = []
 
   addtask(){
-    this.taskList.push({id:this.taskList.length+1,name:this.task})
-    this.task=""
+    if (!this.task || this.task.trim() === ''){
+      alert('Task cannot be empty!');
+      return;
+    } else{
+      this.taskList.push({id:this.taskList.length+1,name:this.task})
+      this.task=""
+    }
   }
 
   completetask(num:number){
