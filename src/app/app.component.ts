@@ -30,7 +30,11 @@ export class AppComponent {
   }
 
   deletetask(num:number){
-    this.taskList.splice(num,1)
-    console.log(this.taskList)
+    for (let i = 0; i < this.taskList.length; i++) {
+      if (this.taskList[i].id === num) {
+        this.taskList.splice(i, 1);
+        break;
+      }
+    }
   }
 }

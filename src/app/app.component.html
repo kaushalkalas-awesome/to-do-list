@@ -1,27 +1,51 @@
-<h1>To Do List</h1>
-<input [(ngModel)]="task" type="text" name="task" id="task" placeholder="Enter task">
-<button type="button" (click)="addtask()">Submit</button>
-<div id="table">
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (task of taskList; track task.id) {
+<div class="container my-5">
+  <div class="row bg-secondary text-white p-2 my-2">
+    <div class="col text-center">
+      <h1 class="display-6">To Do List :)</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-8 mx-auto">
+      <form class="p-4 border rounded bg-light">
+        <div class="mb-3">
+          <label for="task" class="form-label">Enter Task:</label>
+          <input [(ngModel)]="task" class="form-control" type="text" name="task" id="task" placeholder="Enter here!" required>
+        </div>
+        <button type="button" class="btn btn-secondary w-100" (click)="addtask()">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="table-responsive my-5">
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
         <tr>
-          <td>{{task.id}}</td>
-          <td>{{task.name}}</td>
-          <td><button (click)="completetask(task.id)" type="button">Complete</button><button (click)="deletetask(task.id)" type="button">Delete</button></td>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Action</th>
         </tr>
-      }
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        @for (task of taskList; track task.id) {
+          <tr>
+            <td>{{task.id}}</td>
+            <td>{{task.name}}</td>
+            <td>
+              <button class="btn btn-success btn-sm me-2" (click)="completetask(task.id)">Complete</button>
+              <button class="btn btn-danger btn-sm" (click)="deletetask(task.id)">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <h2 class="text-center">Today's Completed Tasks</h2>
+    @for (item of completeList; track $index) {
+      <p>{{item}}</p>
+      <hr>
+    }
+  </div>
 </div>
-<h2>Today's completed tasks</h2>
-@for (item of completeList; track $index) {
-  <p>{{item}}</p>
-}
