@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'to-do-list';
   task="";
   taskList:{id:number, name:string}[] = []
-  completeList:{name:string}[] = []
+  completeList:string[] = []
 
   addtask(){
     this.taskList.push({id:this.taskList.length+1,name:this.task})
@@ -19,9 +19,14 @@ export class AppComponent {
   }
 
   completetask(num:number){
-    for(let completetask of this.taskList)
-      this.completeList.push({name:completetask.name})
-    this.taskList.splice(num,1)
+    for (let i = 0; i < this.taskList.length; i++) {
+      if (this.taskList[i].id === num) {
+        this.completeList.push(this.taskList[i].name);
+        this.taskList.splice(i, 1);
+        break;
+      }
+    }
+    console.log(this.completeList)
   }
 
   deletetask(num:number){

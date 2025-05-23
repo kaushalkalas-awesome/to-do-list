@@ -11,17 +11,17 @@
       </tr>
     </thead>
     <tbody>
-      @for (task of taskList; track $index) {
+      @for (task of taskList; track task.id) {
         <tr>
           <td>{{task.id}}</td>
           <td>{{task.name}}</td>
-          <td><button (click)="completetask($index)" type="button">Complete</button><button (click)="deletetask($index)" type="button">Delete</button></td>
+          <td><button (click)="completetask(task.id)" type="button">Complete</button><button (click)="deletetask(task.id)" type="button">Delete</button></td>
         </tr>
       }
     </tbody>
   </table>
 </div>
-<h1>Today's completed tasks</h1>
+<h2>Today's completed tasks</h2>
 @for (item of completeList; track $index) {
-  <p>{{item.name}}</p>
+  <p>{{item}}</p>
 }
